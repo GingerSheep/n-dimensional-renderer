@@ -7,7 +7,7 @@ PointArray pointArray_create(unsigned int dimensions, unsigned int pointCount)
 {
     PointArray pointArray;
 
-    pointArray.data = calloc(dimensions * pointCount, sizeof(dimensions));
+    pointArray.data = calloc(dimensions * pointCount, sizeof(double));
     pointArray.dimensions = dimensions;
     pointArray.pointCount = pointCount;
 
@@ -28,7 +28,7 @@ void pointArray_iterate(PointArray *pointArray, void (*iterateFunction)(double*,
 {
     for(unsigned int p = 0; p < pointArray->pointCount; p++)
     {
-        iterateFunction(pointArray->data + p, pointArray->dimensions);
+        iterateFunction(pointArray->data + p * pointArray->dimensions, pointArray->dimensions);
     }
 }
 

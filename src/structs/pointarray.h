@@ -16,6 +16,6 @@ void pointArray_set_point(PointArray *pointArray, unsigned int index, double *da
 
 void pointArray_iterate(PointArray *pointArray, void (*iterateFunction)(double*, int));
 
-void pointArray_destroy(PointArray  *pointArray);
+void pointArray_destroy(PointArray *pointArray);
 
 #endif // POINT_ARRAY_H_INCLUDED

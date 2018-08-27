@@ -31,9 +31,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="main.c">
+		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/structs/pointarray.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/structs/pointarray.h" />
+		<Unit filename="src/structs/simplex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/structs/simplex.h" />
+		<Unit filename="src/structs/simplexarray.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/structs/simplexarray.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

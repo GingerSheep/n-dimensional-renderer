@@ -3,10 +3,17 @@
 	<stdio.h>
 	<stdlib.h>
 
-1535217527 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\pointarray.c
+1535386831 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\pointarray.c
 	"pointarray.h"
 	<stdlib.h>
 	<string.h>
 
-1535217291 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\pointarray.h
+1535383841 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\pointarray.h
+
+1535386831 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\simplex.c
+	"simplex.h"
+	<stdlib.h>
+	<string.h>
+
+1535383839 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\simplex.h
 
