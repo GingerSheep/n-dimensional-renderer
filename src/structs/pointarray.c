@@ -19,17 +19,25 @@ void pointArray_set_points(PointArray *pointArray, double *data)
     memcpy(pointArray->data, data, sizeof(double) * pointArray->dimensions * pointArray->pointCount);
 }
 
-void pointArray_set_point(PointArray *pointArray, unsigned int index, double *data)
+void pointArray_set_point(PointArray *pointArray, unsigned int index, Point *point)
 {
-    memcpy(pointArray->data + index, data, sizeof(double) * pointArray->dimensions);
+    memcpy(pointArray->data + index, point->data, sizeof(double) * pointArray->dimensions);
 }
 
-void pointArray_iterate(PointArray *pointArray, void (*iterateFunction)(double*, int))
+void pointArray_iterate(PointArray *pointArray, void (*iterateFunction)(Point *))
 {
+    Point *point = malloc(sizeof(Point));
+
+    point->dimensions = pointArray->dimensions;
+
     for(unsigned int p = 0; p < pointArray->pointCount; p++)
     {
-        iterateFunction(pointArray->data + p * pointArray->dimensions, pointArray->dimensions);
+        point->data = pointArray->data + p * pointArray->dimensions;
+
+        iterateFunction(point);
     }
+
+    free(point);
 }
 
 void pointArray_destroy(PointArray  *pointArray)

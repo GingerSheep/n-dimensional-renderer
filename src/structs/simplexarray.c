@@ -3,50 +3,61 @@
 #include <stdlib.h>
 #include <string.h>
 
-SimplexArray simplexArray_create(unsigned int dimensions, unsigned simplexCount)
+SimplexArray simplexArray_create(unsigned int dimensions, unsigned int simplexCount, PointArray *points)
 {
     SimplexArray simplexArray;
 
-    simplexArray.data = calloc(dimensions * (dimensions + 1) * simplexCount, sizeof(double));
+    simplexArray.points = points;
+    simplexArray.indexes = calloc((dimensions + 1) * simplexCount, sizeof(unsigned int));
     simplexArray.dimensions = dimensions;
     simplexArray.simplexCount = simplexCount;
 
     return simplexArray;
 }
 
-void simplexArray_set_points(SimplexArray *simplexArray, double *data)
+void simplexArray_set_indexes(SimplexArray *simplexArray, unsigned int *indexes)
 {
-    memcpy(simplexArray->data, data, sizeof(double) * simplexArray->dimensions * (simplexArray->dimensions + 1) * simplexArray->simplexCount);
+    memcpy(simplexArray->indexes, indexes, sizeof(unsigned int) * (simplexArray->dimensions + 1) * simplexArray->simplexCount);
 }
 
-void simplexArray_set_point(SimplexArray *simplexArray, unsigned int simplexIndex, unsigned int pointIndex, double *data)
+void simplexArray_set_index(SimplexArray *simplexArray, unsigned int simplexIndex, unsigned int indexIndex, unsigned int index)
 {
-    memcpy(simplexArray->data + simplexArray->dimensions * simplexIndex + pointIndex, data, sizeof(double) * simplexArray->dimensions);
+    *(simplexArray->indexes + simplexIndex * (simplexArray->dimensions + 1) + indexIndex) = index;
 }
 
 void simplexArray_set_simplex(SimplexArray *simplexArray, unsigned int index, Simplex *simplex)
 {
-    memcpy(simplexArray-> data + simplexArray->dimensions * index, simplex->data, sizeof(double) * simplexArray->dimensions * (simplexArray->dimensions + 1));
+    memcpy(simplexArray->indexes + (simplexArray->dimensions + 1) * index, simplex->indexes, sizeof(unsigned int) *  (simplexArray->dimensions + 1));
 }
 
-void simplexArray_iterate_points(SimplexArray *simplexArray, void (*iterateFunction)(double*, int))
+void simplexArray_iterate_points(SimplexArray *simplexArray, void (*iterateFunction)(Point *))
 {
+    Point *point = malloc(sizeof(Point));
+
+    point->dimensions = simplexArray->points->dimensions;
+
     for(unsigned int p = 0; p < (simplexArray->dimensions + 1) * simplexArray->simplexCount; p++)
     {
-        iterateFunction(simplexArray->data + p * simplexArray->dimensions, simplexArray->dimensions);
+        point->data = simplexArray->points->data + simplexArray->indexes[p];
+
+        iterateFunction(point);
     }
 }
 
-void simplexArray_iterate_simplexes(SimplexArray *simplexArray, void (*iterateFunction)(Simplex))
+void simplexArray_iterate_simplexes(SimplexArray *simplexArray, void (*iterateFunction)(Simplex *))
 {
     Simplex *simplex = malloc(sizeof(Simplex));
+
     simplex->dimensions = simplexArray->dimensions;
+
+    simplex->points = simplexArray->points;
 
     for(unsigned int s = 0; s < simplexArray->simplexCount; s++)
     {
-        simplex->data = simplexArray->data + s * simplexArray->dimensions * (simplexArray->dimensions + 1);
 
-        iterateFunction(*simplex);
+        simplex->indexes = simplexArray->indexes + s * (simplexArray->dimensions + 1);
+
+        iterateFunction(simplex);
     }
 
     free(simplex);
@@ -54,7 +65,7 @@ void simplexArray_iterate_simplexes(SimplexArray *simplexArray, void (*iterateFu
 
 void simplexArray_destroy(SimplexArray *simplexArray)
 {
-    free(simplexArray->data);
+    free(simplexArray->indexes);
     simplexArray->dimensions = 0;
     simplexArray->simplexCount = 0;
 }

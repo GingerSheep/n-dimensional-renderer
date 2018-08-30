@@ -3,36 +3,45 @@
 #include <stdlib.h>
 #include <string.h>
 
-Simplex simplex_create(unsigned int dimensions)
+Simplex simplex_create(unsigned int dimensions, PointArray *points)
 {
     Simplex simplex;
 
-    simplex.data = calloc(dimensions * (dimensions + 1), sizeof(double));
+    simplex.points = points;
+    simplex.indexes = calloc((dimensions + 1), sizeof(unsigned int));
     simplex.dimensions = dimensions;
 
     return simplex;
 }
 
-void simplex_set_points(Simplex *simplex, double *data)
+void simplex_set_indexes(Simplex *simplex, unsigned int *indexes)
 {
-    memcpy(simplex->data, data, sizeof(double) * simplex->dimensions * (simplex->dimensions + 1));
+    memcpy(simplex->indexes, indexes, sizeof(unsigned int) * (simplex->dimensions + 1));
 }
 
-void simplex_set_point(Simplex *simplex, unsigned int index, double *data)
+void simplex_set_index(Simplex *simplex, unsigned int index, unsigned int pointIndex)
 {
-    memcpy(simplex->data + index, data, sizeof(double) * simplex->dimensions);
+    *(simplex->indexes + index) = pointIndex;
 }
 
-void simplex_iterate(Simplex *simplex, void (*iterateFunction)(double*, int))
+void simplex_iterate(Simplex *simplex, void (*iterateFunction)(Point *))
 {
+    Point *point = malloc(sizeof(Point));
+
+    point->dimensions = simplex->points->dimensions;
+
     for(unsigned int p = 0; p < simplex->dimensions + 1; p++)
     {
-        iterateFunction(simplex->data + p * simplex->dimensions, simplex->dimensions);
+        point->data = simplex->points->data + simplex->indexes[p];
+
+        iterateFunction(point);
     }
+
+    free(point);
 }
 
 void simplex_destroy(Simplex *simplex)
 {
-    free(simplex->data);
+    free(simplex->indexes);
     simplex->dimensions = 0;
 }
