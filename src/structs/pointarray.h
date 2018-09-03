@@ -18,6 +18,10 @@ void pointArray_set_point(PointArray *pointArray, unsigned int index, Point *poi
 
 void pointArray_iterate(PointArray *pointArray, void (*iterateFunction)(Point *));
 
+void pointArray_add(PointArray *pointArray, Point *point);
+
+void pointArray_remove(PointArray *pointArray, unsigned int index);
+
 void pointArray_destroy(PointArray *pointArray);
 
 #endif // POINT_ARRAY_H_INCLUDED

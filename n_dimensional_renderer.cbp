@@ -42,6 +42,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/structs/pointarray.h" />
+		<Unit filename="src/structs/polytope.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/structs/polytope.h" />
 		<Unit filename="src/structs/simplex.c">
 			<Option compilerVar="CC" />

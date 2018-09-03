@@ -3,12 +3,12 @@
 	<stdio.h>
 	<stdlib.h>
 
-1535668999 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\pointarray.c
+1535983498 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\pointarray.c
 	"pointarray.h"
 	<stdlib.h>
 	<string.h>
 
-1535664331 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\pointarray.h
+1535981698 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\pointarray.h
 	"point.h"
 
 1535668953 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\simplex.c
@@ -19,12 +19,12 @@
 1535664342 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\simplex.h
 	"pointarray.h"
 
-1535387317 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\simplexarray.c
+1535670049 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\simplexarray.c
 	"simplexarray.h"
 	<stdlib.h>
 	<string.h>
 
-1535387254 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\simplexarray.h
+1535982076 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\simplexarray.h
 	"simplex.h"
 
 1535662865 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\point.c
@@ -33,4 +33,12 @@
 	<string.h>
 
 1535652882 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\point.h
+
+1535978233 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\polytope.c
+	"polytope.h"
+	<stdlib.h>
+	<string.h>
+
+1535977750 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\polytope.h
+	"simplexarray.h"
 

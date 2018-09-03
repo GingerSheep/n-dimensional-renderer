@@ -5,8 +5,11 @@
 
 typedef struct
 {
-    PolytopeArray simplexes;
-    SimplexArray sharedSurfaceSimplexes;
-} PolytopeBase;
+    SimplexArray simplexes;
+} Polytope;
+
+Polytope polytope_create(SimplexArray simplexes);
+
+void polytope_destroy(Polytope *polytope);
 
 #endif // POLYTOPE_H_INCLUDED

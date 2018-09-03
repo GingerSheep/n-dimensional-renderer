@@ -23,6 +23,10 @@ void simplexArray_iterate_points(SimplexArray *simplexArray, void (*iterateFunct
 
 void simplexArray_iterate_simplexes(SimplexArray *simplexArray, void (*iterateFunction)(Simplex *));
 
+void simplexArray_add(SimplexArray *simplexArray, Simplex *simplex);
+
+void simplexArray_remove(SimplexArray *simplexArray, unsigned int index);
+
 void simplexArray_destroy(SimplexArray *simplexArray);
 
 #endif // SIMPLEXARRAY_H_INCLUDED

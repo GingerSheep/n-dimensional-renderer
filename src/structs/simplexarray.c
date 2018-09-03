@@ -63,6 +63,35 @@ void simplexArray_iterate_simplexes(SimplexArray *simplexArray, void (*iterateFu
     free(simplex);
 }
 
+void simplexArray_add(SimplexArray *simplexArray, Simplex *simplex)
+{
+    unsigned int *newIndexes = realloc(simplexArray->indexes, (simplexArray->dimensions + 1) * (simplexArray->simplexCount + 1) * sizeof(unsigned int));
+
+    if(newIndexes != NULL)
+    {
+        simplexArray->indexes = newIndexes;
+
+        memcpy(newIndexes + (simplexArray->dimensions + 1) * simplexArray->simplexCount, simplex->indexes, (simplexArray->dimensions + 1) * sizeof(unsigned int));
+
+        simplexArray->simplexCount = simplexArray->simplexCount + 1;
+    }
+}
+
+void simplexArray_remove(SimplexArray *simplexArray, unsigned int index)
+{
+    unsigned int *newIndexes = malloc((simplexArray->dimensions + 1) * (simplexArray->simplexCount - 1) * sizeof(unsigned int));
+
+    memcpy(newIndexes, simplexArray->indexes, (simplexArray->dimensions + 1) * index * sizeof(unsigned int));
+
+    memcpy(newIndexes + (simplexArray->dimensions + 1) * index, simplexArray->indexes + (simplexArray->dimensions + 1) * (index + 1), (simplexArray->dimensions + 1) * (simplexArray->simplexCount - 1 - index) * sizeof(unsigned int));
+
+    free(simplexArray->indexes);
+
+    simplexArray->simplexCount = simplexArray->simplexCount - 1;
+
+    simplexArray->indexes = newIndexes;
+}
+
 void simplexArray_destroy(SimplexArray *simplexArray)
 {
     free(simplexArray->indexes);
