@@ -34,6 +34,10 @@
 		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/structs/matrix.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/structs/matrix.h" />
 		<Unit filename="src/structs/point.c">
 			<Option compilerVar="CC" />
 		</Unit>
