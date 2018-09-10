@@ -50,6 +50,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/structs/polytope.h" />
+		<Unit filename="src/structs/polytopearray.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/structs/polytopearray.h" />
 		<Unit filename="src/structs/simplex.c">
 			<Option compilerVar="CC" />
 		</Unit>

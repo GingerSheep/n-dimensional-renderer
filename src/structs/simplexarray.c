@@ -42,6 +42,8 @@ void simplexArray_iterate_points(SimplexArray *simplexArray, void (*iterateFunct
 
         iterateFunction(point);
     }
+
+    free(point);
 }
 
 void simplexArray_iterate_simplexes(SimplexArray *simplexArray, void (*iterateFunction)(Simplex *))

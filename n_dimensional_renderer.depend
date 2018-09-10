@@ -19,7 +19,7 @@
 1535664342 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\simplex.h
 	"pointarray.h"
 
-1535983540 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\simplexarray.c
+1536592247 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\simplexarray.c
 	"simplexarray.h"
 	<stdlib.h>
 	<string.h>
@@ -41,4 +41,12 @@
 
 1535977750 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\polytope.h
 	"simplexarray.h"
+
+1536166640 source:d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\matrix.c
+	"matrix.h"
+	<stdlib.h>
+	<string.h>
+	<stdbool.h>
+
+1536166011 d:\users\jos\documents\codeblocksprojects\n_dimensional_renderer\src\structs\matrix.h
 
